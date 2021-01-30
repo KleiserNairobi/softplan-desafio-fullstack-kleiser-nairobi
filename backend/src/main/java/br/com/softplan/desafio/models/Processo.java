@@ -8,7 +8,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity @Data
 @NoArgsConstructor
@@ -38,5 +40,12 @@ public class Processo {
     private Date dataAbertura;
 
     private Time horaAbertura;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "processo_usuario",
+            joinColumns = @JoinColumn(name = "processo_id"),
+            inverseJoinColumns = @JoinColumn(name = "usuario_id")
+    )
+    private List<Usuario> usuarios = new ArrayList<>();
 
 }

@@ -29,6 +29,11 @@ public class Parecer {
     @NotNull(message = "Campo processo é obrigatório")
     private Processo processo;
 
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    @NotNull(message = "Campo usuário é obrigatório")
+    private Usuario usuario;
+
     @NotNull(message = "Campo parecer é obrigatório")
     @Size(max = 256, message = "Campo parecer deve ter no máximo {max} caracteres")
     private String parecer;
@@ -37,11 +42,6 @@ public class Parecer {
 
     private Time hora;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "parecer_usuario",
-            joinColumns = @JoinColumn(name = "parecer_id"),
-            inverseJoinColumns = @JoinColumn(name = "usuario_id")
-    )
-    private List<Usuario> usuarios = new ArrayList<>();
+
 
 }
