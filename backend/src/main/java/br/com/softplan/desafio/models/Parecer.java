@@ -42,6 +42,4 @@ public class Parecer {
 
     private Time hora;
 
-
-
 }
