@@ -2,8 +2,10 @@ import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { Divider, Drawer, List, ListItem, ListItemIcon, ListItemText, Typography } from '@material-ui/core';
 import { Assignment, AssignmentTurnedIn, PermContactCalendar, Person } from '@material-ui/icons';
+import styles from '../styles';
 
 export default function BarraMenu() {
+  const estilo = styles();
   
   function ListItemLink(props) {
     const { icon, primary, to } = props;
@@ -15,7 +17,7 @@ export default function BarraMenu() {
     return (
       <li >
         <ListItem button component={renderLink} >
-          {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
+          {icon ? <ListItemIcon className={estilo.ml1}>{icon}</ListItemIcon> : null}
           <ListItemText primary={primary} />
         </ListItem>
       </li>
@@ -26,8 +28,10 @@ export default function BarraMenu() {
     <Drawer
       anchor="left"  
       variant="permanent"
+      className={estilo.drawer}
+      classes={{paper: estilo.drawerPaper}} 
     >
-      <div>
+      <div className={estilo.toolbar}>
         <Typography variant="h5">Desafio SoftPlan</Typography>
       </div>      
       <Divider />

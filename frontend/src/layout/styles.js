@@ -21,7 +21,29 @@ const styles = makeStyles((theme) => ({
       marginLeft: theme.spacing(0),
       marginRight: theme.spacing(2),
     },
-  },    
+  },
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+  },
+  drawerPaper: {
+    width: drawerWidth,
+  },  
+  toolbar: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: theme.spacing(0, 1),
+    backgroundColor: theme.palette.primary.main,
+    color: '#FFF',
+    ...theme.mixins.toolbar,
+  },  
+  ml1: {
+    '& > *': {
+      marginLeft: theme.spacing(1),
+    },
+  },
+
 }));
 
 export default styles;  
