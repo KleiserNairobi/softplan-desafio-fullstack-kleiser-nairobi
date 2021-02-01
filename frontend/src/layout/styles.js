@@ -43,6 +43,16 @@ const styles = makeStyles((theme) => ({
       marginLeft: theme.spacing(1),
     },
   },
+  conteudo: {
+    flexGrow: 1,
+    minHeight: `calc(100vh - 50px)`,
+    height: `calc(100vh - 50px)`,
+    marginLeft: drawerWidth,
+    marginTop: '50px',
+    padding: theme.spacing(3),
+    overflowY: 'scroll',
+  },
+
 
 }));
 
