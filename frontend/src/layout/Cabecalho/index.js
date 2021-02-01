@@ -3,6 +3,8 @@ import { CssBaseline, AppBar, Toolbar, IconButton, Avatar, Typography, Tooltip }
 import { ExitToApp, Person } from '@material-ui/icons';
 import { useAutenticacao } from '../../contexts/AutenticacaoCtx';
 
+import BarraMenu from '../Menu';
+
 export default function Cabecalho() {
   
   const { handleLogout } = useAutenticacao();
@@ -33,6 +35,7 @@ export default function Cabecalho() {
             </IconButton>
           </Tooltip>
         </Toolbar>
+        <BarraMenu/>
       </AppBar>
     </div>
   )
