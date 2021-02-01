@@ -2,10 +2,12 @@ import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { Divider, Drawer, List, ListItem, ListItemIcon, ListItemText, Typography } from '@material-ui/core';
 import { Assignment, AssignmentTurnedIn, PermContactCalendar, Person } from '@material-ui/icons';
+import { useGeral } from '../../contexts/GeralCtx';
 import styles from '../styles';
 
 export default function BarraMenu() {
   const estilo = styles();
+  const { setCarregar } = useGeral();
   
   function ListItemLink(props) {
     const { icon, primary, to } = props;
@@ -16,7 +18,7 @@ export default function BarraMenu() {
     );
     return (
       <li >
-        <ListItem button component={renderLink} >
+        <ListItem button component={renderLink} onClick={() => setCarregar(true)} >
           {icon ? <ListItemIcon className={estilo.ml1}>{icon}</ListItemIcon> : null}
           <ListItemText primary={primary} />
         </ListItem>
