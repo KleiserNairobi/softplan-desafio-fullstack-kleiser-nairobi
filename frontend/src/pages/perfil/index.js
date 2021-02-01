@@ -41,7 +41,6 @@ export default function Perfil() {
         linkPagina="/perfis-form"
         tituloBotao="Adicionar"
       />
-      <br/>
       <Tabela
         colunas={colunasTabela}
         dados={dados}
