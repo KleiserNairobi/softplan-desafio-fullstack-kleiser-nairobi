@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Content({ children }) {  
+export default function Conteudo({ children }) {  
   return (
     <main>
       {children}
