@@ -64,7 +64,8 @@ export function AutenticacaoProvider({ children }) {
   return (
     <AutenticacaoCtx.Provider
       value={{ 
-        carregando, autenticado, setAutenticado, handleLogin, handleLogout
+        carregando, autenticado, setAutenticado, handleLogin, handleLogout,
+        usuario
       }}
     >
       {children}
