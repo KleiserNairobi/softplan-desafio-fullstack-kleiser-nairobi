@@ -9,7 +9,7 @@ import styles from '../styles';
 export default function Cabecalho() {
   
   const estilo = styles();
-  const { handleLogout } = useAutenticacao();
+  const { usuario, handleLogout } = useAutenticacao();
 
   function sairSistema() {
     handleLogout();
@@ -29,7 +29,7 @@ export default function Cabecalho() {
                 <Person />
               </Avatar>
             </div>
-            <Typography variant="subtitle1">Nome Usuário</Typography>
+            <Typography variant="subtitle1">{usuario.nome}</Typography>
           </div>
           <div style={{ flex: 1 }} />
           <Tooltip title="Sair do sistema" placement="bottom" arrow>
