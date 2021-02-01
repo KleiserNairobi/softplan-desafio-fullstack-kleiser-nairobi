@@ -1,9 +1,20 @@
+import React from 'react';
+
+// importando provider
+import { AutenticacaoProvider } from './contexts/AutenticacaoCtx';
+
+// importando o layout e as páginas
+import Rotas from './pages';
 
 function App() {
   return (
-    <div>
-      <h1>App</h1>
-    </div>
+    <AutenticacaoProvider>     
+      <div>
+        {
+          <Rotas />
+        }
+      </div>
+    </AutenticacaoProvider>
   );
 }
 
