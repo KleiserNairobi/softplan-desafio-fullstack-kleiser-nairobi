@@ -1,5 +1,6 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { useAutenticacao } from '../contexts/AutenticacaoCtx';
 
 // import de página pública
 import Login from './login';
@@ -10,15 +11,31 @@ import Usuario from './usuario';
 import Processo from './processo';
 import Parecer from './parecer';
 
-function Rotas() {  
+function Rotas() { 
+  function PrivateRoute({ component: Component, ...rest }) {  
+    const { autenticado } = useAutenticacao();        
+    return (
+      <Route
+        {...rest}
+        render={props => (
+          autenticado ? (
+            <Component {...props} />
+          ) : (
+            <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
+          )
+        )} 
+      />
+    )
+  }  
+  
   return (
     <Switch>
-      <Route exact path="/" component={Processo} />
       <Route path="/login" component={Login} /> 
-      <Route path="/perfis" component={Perfil} />
-      <Route path="/usuarios" component={Usuario} />
-      <Route path="/processos" component={Processo} />
-      <Route path="/pareceres" component={Parecer} />
+      <PrivateRoute exact path="/" component={Processo} />
+      <PrivateRoute path="/perfis" component={Perfil} />
+      <PrivateRoute path="/usuarios" component={Usuario} />
+      <PrivateRoute path="/processos" component={Processo} />
+      <PrivateRoute path="/pareceres" component={Parecer} />
     </Switch>
   )
 }
