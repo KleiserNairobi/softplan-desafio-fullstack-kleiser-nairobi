@@ -5,7 +5,10 @@ import br.com.softplan.desafio.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuarioService {
@@ -23,6 +26,10 @@ public class UsuarioService {
                         "Não existe um cadastro de usuário com o id " + id
                 )
         );
+    }
+
+    public Optional<Usuario> findByEmailAndSenha(String email, String senha) {
+        return repository.findByEmailAndSenha(email, senha);
     }
 
     @Transactional

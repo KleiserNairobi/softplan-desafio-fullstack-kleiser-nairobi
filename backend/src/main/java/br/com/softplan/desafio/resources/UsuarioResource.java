@@ -10,6 +10,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -26,6 +27,14 @@ public class UsuarioResource {
     @GetMapping("/{id}")
     public ResponseEntity<Usuario> find(@PathVariable Long id) {
         return ResponseEntity.ok().body(service.find(id));
+    }
+
+    @GetMapping("/login")
+    public ResponseEntity<Optional<Usuario>> login(
+            @RequestParam(name = "email", required = true) String email,
+            @RequestParam(name = "senha", required = true) String senha
+    ) {
+        return ResponseEntity.ok().body(service.findByEmailAndSenha(email, senha));
     }
 
     @PostMapping
