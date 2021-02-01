@@ -4,9 +4,11 @@ import { ExitToApp, Person } from '@material-ui/icons';
 import { useAutenticacao } from '../../contexts/AutenticacaoCtx';
 
 import BarraMenu from '../Menu';
+import styles from '../styles';
 
 export default function Cabecalho() {
   
+  const estilo = styles();
   const { handleLogout } = useAutenticacao();
 
   function sairSistema() {
@@ -14,14 +16,15 @@ export default function Cabecalho() {
   }
 
   return (
-    <div>
+    <div className={estilo.root}>
       <CssBaseline/>
       <AppBar
         position="fixed"
+        className={estilo.appBar}
       >
         <Toolbar>
-          <div>
-            <div>
+          <div className={estilo.dadosUsuario}>
+            <div className={estilo.margemAvatar}>
               <Avatar alt="usuario">
                 <Person />
               </Avatar>
