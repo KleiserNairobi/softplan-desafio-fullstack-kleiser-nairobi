@@ -1,9 +1,16 @@
 import React from 'react';
+import CabecalhoForm from '../../components/CabecalhoForm';
+
 
 export default function Perfil() {
   return (
     <div>
-      <h1>Perfil</h1>
+      <CabecalhoForm
+        titulo="Perfis"
+        subtitulo="Listagem de todas os perfis"
+        linkPagina="/perfis-form"
+        tituloBotao="Adicionar"
+      />
     </div>
   )
 }

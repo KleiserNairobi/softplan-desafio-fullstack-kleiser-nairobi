@@ -1,9 +1,16 @@
 import React from 'react';
+import CabecalhoForm from '../../components/CabecalhoForm';
+
 
 export default function Processo() {
   return (
     <div>
-      <h1>Processo</h1>
+      <CabecalhoForm
+        titulo="Processos"
+        subtitulo="Listagem de todas os processos"
+        linkPagina="/processos-form"
+        tituloBotao="Adicionar"
+      />
     </div>
   )
 }

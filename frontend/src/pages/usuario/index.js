@@ -1,9 +1,15 @@
 import React from 'react';
+import CabecalhoForm from '../../components/CabecalhoForm';
 
 export default function Usuario() {
   return (
     <div>
-      <h1>Usuario</h1>
+      <CabecalhoForm
+        titulo="Usuários"
+        subtitulo="Listagem de todas os usuários"
+        linkPagina="/usuarios-form"
+        tituloBotao="Adicionar"
+      />
     </div>
   )
 }

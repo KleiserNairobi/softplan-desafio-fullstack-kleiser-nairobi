@@ -1,9 +1,15 @@
 import React from 'react';
+import CabecalhoForm from '../../components/CabecalhoForm';
 
 export default function Parecer() {
   return (
     <div>
-      <h1>Parecer</h1>
+      <CabecalhoForm
+        titulo="Pareceres"
+        subtitulo="Listagem de todas os pareceres"
+        linkPagina="/pareceres-form"
+        tituloBotao="Adicionar"
+      />
     </div>
   )
 }
