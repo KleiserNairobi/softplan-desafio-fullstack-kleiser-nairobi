@@ -52,6 +52,20 @@ const styles = makeStyles((theme) => ({
     padding: theme.spacing(3),
     overflowY: 'scroll',
   },
+  tituloPagina: {
+    marginLeft: 0,
+    '& .MuiTypography-h6': {
+      color: theme.palette.primary.main,
+    },
+  },
+  subtituloPagina: {
+    marginLeft: 0,
+    marginBottom: theme.spacing(2),
+    '& .MuiTypography-caption': {
+      color: theme.palette.text.primary,
+      opacity: '0.9',
+    },
+  },
 
 
 }));
