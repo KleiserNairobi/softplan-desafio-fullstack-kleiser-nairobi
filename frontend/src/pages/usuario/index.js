@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import { useHistory } from 'react-router-dom';
 import CabecalhoForm from '../../components/CabecalhoForm';
 import Tabela from '../../components/Tabela';
 import { useGeral } from '../../contexts/GeralCtx';
@@ -6,9 +7,10 @@ import * as service from '../../services/UsuarioService';
 
 export default function Usuario() {
 
+  const history = useHistory();
   const [dados, setDados] = useState([]);
   const [carregando, setCarregando] = useState(false);  
-  const {id, carregar, setCarregar} = useGeral();
+  const {id, carregar, setCarregar, alterar} = useGeral();
 
   const colunasTabela = [
     { title: 'ID', field: 'id', width: 20 },
@@ -32,6 +34,13 @@ export default function Usuario() {
       setCarregar(false);
     }
   }, [id, carregar, setCarregar])
+
+  // Effect para carregar a tela de cadastro
+  useEffect(() => {
+    if (alterar) {
+      history.push('/usuarios-form');
+    }
+  }, [alterar, history])
 
   return (
     <div>

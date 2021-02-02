@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import { useHistory } from 'react-router-dom';
 import CabecalhoForm from '../../components/CabecalhoForm';
 import Tabela from '../../components/Tabela';
 import { useGeral } from '../../contexts/GeralCtx';
@@ -7,9 +8,10 @@ import * as service from '../../services/ParecerService';
 
 export default function Parecer() {
 
+  const history = useHistory();
   const [dados, setDados] = useState([]);
   const [carregando, setCarregando] = useState(false);  
-  const {id, carregar, setCarregar} = useGeral();
+  const {id, carregar, setCarregar, alterar} = useGeral();
 
   const colunasTabela = [
     { title: 'ID', field: 'id', width: 20 },
@@ -35,6 +37,13 @@ export default function Parecer() {
       setCarregar(false);
     }
   }, [id, carregar, setCarregar])
+
+  // Effect para carregar a tela de cadastro
+  useEffect(() => {
+    if (alterar) {
+      history.push('/pareceres-form');
+    }
+  }, [alterar, history])
 
   return (
     <div>
