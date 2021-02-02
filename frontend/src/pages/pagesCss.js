@@ -9,7 +9,7 @@ const PagesCss = makeStyles((theme) => ({
     },
     '& .MuiCardHeader-subheader': {
       color: theme.palette.primary.contrastText,
-      opacity: '0.7',
+      opacity: '0.8',
       fontSize: '12px',
     },
     '& .MuiSvgIcon-root': {
