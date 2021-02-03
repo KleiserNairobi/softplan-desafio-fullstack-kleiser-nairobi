@@ -36,7 +36,9 @@ export function AutenticacaoProvider({ children }) {
         });
         setAutenticado(true);
         setCarregando(true);
-        history.push('/processos');  
+        history.push('/dashboard');  
+      } else {
+        alert('Usuário e/ou senha inválidos');
       }
     })
     .catch(error => {
@@ -46,7 +48,8 @@ export function AutenticacaoProvider({ children }) {
         perfil: null
       })
       setAutenticado(false);
-      setCarregando(false);  
+      setCarregando(false);
+      alert(error);  
     });
   }
 
