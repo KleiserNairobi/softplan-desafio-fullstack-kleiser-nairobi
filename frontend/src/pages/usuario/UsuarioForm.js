@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import CabecalhoForm from '../../components/CabecalhoForm';
-import { Avatar, Button, Card, CardActions, CardContent, CardHeader, Divider, Grid, IconButton, MenuItem, TextField } from '@material-ui/core';
+import { Avatar, Button, Card, CardActions, CardContent, CardHeader, Divider, Grid, IconButton, TextField } from '@material-ui/core';
 import { ArrowBack, PermContactCalendar, YoutubeSearchedFor } from '@material-ui/icons';
 import { useHistory } from 'react-router-dom';
 import { useGeral } from '../../contexts/GeralCtx';
@@ -16,8 +16,9 @@ export default function UsuariioForm() {
   const css = PageCss();
   const history = useHistory();
   const { id, alterar, setAlterar, setCarregar } = useGeral();
+  
   const valoresIniciais = {
-    pessoa: { id: ''},
+    perfil: { id: '', descricao: ''},
     nome: '',
     email: '',
     senha: ''
@@ -37,6 +38,7 @@ export default function UsuariioForm() {
           const resposta = await service.obtem(`/usuarios/${id}`);
           if (resposta.data) {
             setValue('perfil.id', resposta.data.perfil.id);
+            setValue('perfil.descricao', resposta.data.perfil.descricao);
             setValue('nome', resposta.data.nome);
             setValue('email', resposta.data.email);
             setValue('senha', resposta.data.senha);
@@ -48,6 +50,26 @@ export default function UsuariioForm() {
       buscaDado();
     }
   }, [id, alterar, setValue]);
+
+  // Busca dados do perfil - quando ocorre onBlur
+  async function onBlurPerfil(ev) {
+    if (ev.target.value === '') {
+      setValue('perfil.descricao', '');
+    } else {
+      const idPerfil = ev.target.value;
+      try {
+        const { data } = await service.obtem(`/perfis/${idPerfil}`);
+        if (data) {
+          setValue('perfil.id', idPerfil);
+          setValue('perfil.descricao', data.descricao);
+        }
+      } catch (error) {
+        setValue('perfil.descricao', '');
+        alert(error);
+      }
+    }
+  }
+
 
   function submitForm(data) {
     if (alterar & id > 0) {
@@ -114,11 +136,11 @@ export default function UsuariioForm() {
                       error={!!errors.perfil}
                       helperText={errors.perfil ? errors.perfil.id.message : ''}
                       InputProps={{
-                        onBlur: (ev) => console.log(ev),
+                        onBlur: (ev) => onBlurPerfil(ev),
                         endAdornment: 
                           <IconButton
                             size="small"
-                            onClick={() => console.log('chamou onClick')}
+                            onClick={() => alert('Apresentar tela para escolha do perfil')}
                           >
                             <YoutubeSearchedFor fontSize="small" />
                           </IconButton>
@@ -129,7 +151,7 @@ export default function UsuariioForm() {
                     <TextField
                       fullWidth
                       type="text"
-                      name="descricao"
+                      name="perfil.descricao"
                       label="Descrição Perfil"
                       variant="filled"
                       inputRef={register}
