@@ -19,7 +19,21 @@ const PagesCss = makeStyles((theme) => ({
   avatar: {
     backgroundColor: theme.palette.primary.dark,
   },
-
+  formBarraBotao: {
+    width: '100%',
+    marginTop: 40,
+    marginBottom: 20,
+    marginLeft: 10,
+    marginRight: 10,
+    
+  },
+  formBotaoDeAcao: {
+    marginTop: 20,
+    marginLeft: 10,
+    '& .MuiButton-label': {
+      color: theme.palette.primary.contrastText,
+    },
+  },
 
 }));
 
