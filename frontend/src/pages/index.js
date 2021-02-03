@@ -6,6 +6,7 @@ import { useAutenticacao } from '../contexts/AutenticacaoCtx';
 import Login from './login';
 
 // import de páginas privadas
+import Dashboard from './dashboard';
 import Perfil from './perfil';
 import PerfilForm from './perfil/PerfilForm';
 import Usuario from './usuario';
@@ -35,15 +36,16 @@ function Rotas() {
   return (
     <Switch>
       <Route path="/login" component={Login} /> 
-      <Route exact path="/" component={Processo} />
-      <Route path="/perfis" component={Perfil} />
-      <Route path="/perfis-form" component={PerfilForm} />
-      <Route path="/usuarios" component={Usuario} />
-      <Route path="/usuarios-form" component={UsuarioForm} />
-      <Route path="/processos" component={Processo} />
-      <Route path="/processos-form" component={ProcessoForm} />
-      <Route path="/pareceres" component={Parecer} />
-      <Route path="/pareceres-form" component={ParecerForm} />
+      <PrivateRoute exact path="/" component={Dashboard} />
+      <PrivateRoute path="/dashboard" component={Dashboard} />
+      <PrivateRoute path="/perfis" component={Perfil} />
+      <PrivateRoute path="/perfis-form" component={PerfilForm} />
+      <PrivateRoute path="/usuarios" component={Usuario} />
+      <PrivateRoute path="/usuarios-form" component={UsuarioForm} />
+      <PrivateRoute path="/processos" component={Processo} />
+      <PrivateRoute path="/processos-form" component={ProcessoForm} />
+      <PrivateRoute path="/pareceres" component={Parecer} />
+      <PrivateRoute path="/pareceres-form" component={ParecerForm} />
     </Switch>
   )
 }

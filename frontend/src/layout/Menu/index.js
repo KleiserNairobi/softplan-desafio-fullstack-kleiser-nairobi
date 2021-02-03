@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { Divider, Drawer, List, ListItem, ListItemIcon, ListItemText, Typography } from '@material-ui/core';
-import { Assignment, AssignmentTurnedIn, PermContactCalendar, Person } from '@material-ui/icons';
+import { Assignment, AssignmentTurnedIn, PermContactCalendar, Person, Speed } from '@material-ui/icons';
 import { useGeral } from '../../contexts/GeralCtx';
+import { useAutenticacao } from '../../contexts/AutenticacaoCtx';
 import styles from '../styles';
 
 export default function BarraMenu() {
   const estilo = styles();
   const { setCarregar } = useGeral();
+  const { usuario } = useAutenticacao();
   
   function ListItemLink(props) {
     const { icon, primary, to } = props;
@@ -37,12 +39,25 @@ export default function BarraMenu() {
         <Typography variant="h5">Desafio SoftPlan</Typography>
       </div>      
       <Divider />
-      <List component="div" disablePadding dense={true}>
-        <ListItemLink to="/perfis" primary="Perfis" icon={<PermContactCalendar/>}/>      
-        <ListItemLink to="/usuarios" primary="Usuários" icon={<Person/>}/>
-        <Divider/>        
-        <ListItemLink to="/processos" primary="Processos" icon={<Assignment/>}/>
-        <ListItemLink to="/pareceres" primary="Pareceres" icon={<AssignmentTurnedIn/>}/>
+      <List component="div" disablePadding dense={true}>  
+        <ListItemLink to="/dashboard" primary="Dashboard" icon={<Speed/>}/> 
+        <Divider/>             
+        {usuario.perfil === "ADM"
+          ? <div>
+            <ListItemLink to="/perfis" primary="Perfis" icon={<PermContactCalendar/>}/>      
+            <ListItemLink to="/usuarios" primary="Usuários" icon={<Person/>}/>
+            <Divider/> 
+            </div>
+          : null
+        }
+        {usuario.perfil === "TRI" 
+          ? <ListItemLink to="/processos" primary="Processos" icon={<Assignment/>}/>
+          : null
+        }
+        {usuario.perfil === "FIN"
+          ? <ListItemLink to="/pareceres" primary="Pareceres" icon={<AssignmentTurnedIn/>}/>
+          : null
+        }       
       </List>      
     </Drawer>
   );
