@@ -82,6 +82,14 @@ export default function Login() {
             Entrar
           </Button>
         </form>
+
+        <div className={classes.rodape} >
+          <Typography variant="caption"><b>Para acesso ao sistema, utilize:</b></Typography>
+          <Typography variant="caption">Usuário: admin@admin.com</Typography>
+          <Typography variant="caption">Senha: 123456</Typography>
+          <Typography variant="caption">elaborado por Kleiser Nairobi de Oliveira</Typography>
+        </div>
+
       </div>
     </Container>
 
