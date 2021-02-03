@@ -2,6 +2,7 @@ package br.com.softplan.desafio.services;
 
 import br.com.softplan.desafio.models.Usuario;
 import br.com.softplan.desafio.repositories.UsuarioRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,6 +41,7 @@ public class UsuarioService {
     @Transactional
     public Usuario update(Usuario entity, Long id) {
         Usuario usuario = find(id);
+        BeanUtils.copyProperties(entity, usuario, "id");
         return repository.save(usuario);
     }
 

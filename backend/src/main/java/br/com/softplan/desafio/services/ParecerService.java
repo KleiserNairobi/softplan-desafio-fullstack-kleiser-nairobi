@@ -2,6 +2,7 @@ package br.com.softplan.desafio.services;
 
 import br.com.softplan.desafio.models.Parecer;
 import br.com.softplan.desafio.repositories.ParecerRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,6 +34,7 @@ public class ParecerService {
     @Transactional
     public Parecer update(Parecer entity, Long id) {
         Parecer parecer = find(id);
+        BeanUtils.copyProperties(entity, parecer, "id");
         return repository.save(parecer);
     }
 

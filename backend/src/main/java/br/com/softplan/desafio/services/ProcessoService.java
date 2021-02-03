@@ -2,6 +2,7 @@ package br.com.softplan.desafio.services;
 
 import br.com.softplan.desafio.models.Processo;
 import br.com.softplan.desafio.repositories.ProcessoRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,6 +34,7 @@ public class ProcessoService {
     @Transactional
     public Processo update(Processo entity, Long id) {
         Processo processo = find(id);
+        BeanUtils.copyProperties(entity, processo, "id");
         return repository.save(processo);
     }
 
