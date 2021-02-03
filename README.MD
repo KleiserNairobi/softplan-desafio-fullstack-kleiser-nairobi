@@ -1,3 +1,36 @@
+# Candidato
+Kleiser Nairobi de Oliveira
+
+# Tecnologias utilizadas no backend
+- Java 11
+- Spring Boot 2.4.2 (Web e Data Jpa)
+- Lombok
+- Javax Validation
+- FlywayDB (gerenciador de migrations)
+- PostgreSql
+
+# Tecnologias utilizadas no frontend
+- ReactJS
+- Dom
+- Router
+- Router-Dom
+- Material-UI (biblioteca UI estilo material)
+- Material-Table (data table estilo material)
+- Axios (para requisições http)
+- React-Hook-Form (para validação de formulário)
+- Yup (para validação de formulário)
+
+# Requisitos para rodar as aplicações
+- Criar uma base de dados local em PostgreSql versão 12 ou superior
+- Informar no arquivo application.properties o nome do banco de dados
+- O backend roda na porta 8080
+- O frontend roda na porta 3000
+- Ao startar o backend o Flyway cria as tabelas
+- Usuário para acesso: admin@admin.com
+- Senha para acesso: 123456
+
+
+
 # Desafio implementador fullstack
 
 Seja parte da jornada de transformação digital no Brasil.
@@ -59,7 +92,7 @@ Procuramos desenvolvedor versátil para resolver os mais diversos problemas, que
 
 
 ### O que será avaliado
-- O código será avaliado seguindo os seguintes critérios: manutenabilidade, clareza e limpeza de código; resultado funcional; entre outros fatores. 
+- O código será avaliado seguindo os seguintes critérios: manutenabilidade, clareza e limpeza de código; resultado funcional; entre outros fatores.
 - O histórico no `git` também está avaliado.
 - Não esqueça de documentar o processo necessário para rodar a aplicação.
 - Se necessário explique as decisões técnicas tomadas, as escolhas por bibliotecas e ferrramentas, o uso de patterns etc.
