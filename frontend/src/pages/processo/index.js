@@ -21,8 +21,8 @@ export default function Processo() {
     { title: 'ID', field: 'id', width: 20 },
     { title: 'Solicitante', field: 'solicitante', width: 250 },
     { title: 'Assunto', field: 'assunto', width: 250 },
-    { title: 'Data Abertura', field: 'dataAbertura', width: 50 },
-    { title: 'Hora Abertura', field: 'horaAbertura', width: 50 },
+    { title: 'Data Abertura', field: 'dataAbertura', type: 'date', width: 50 },
+    { title: 'Hora Abertura', field: 'horaAbertura', type: 'time', width: 50 },
     { title: 'Usuário', field: 'usuario.id', width: 100 }
   ];
 

@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import CabecalhoForm from '../../components/CabecalhoForm';
 import { Avatar, Button, Card, CardActions, CardContent, CardHeader, Divider, Grid, TextField } from '@material-ui/core';
-import { ArrowBack, PermContactCalendar } from '@material-ui/icons';
+import { ArrowBack, Assignment } from '@material-ui/icons';
 import { useHistory } from 'react-router-dom';
 import { useGeral } from '../../contexts/GeralCtx';
 import { useAutenticacao } from '../../contexts/AutenticacaoCtx';
@@ -89,7 +89,7 @@ export default function ProcessoForm() {
           <CardContent>
             <Card>
               <CardHeader
-                avatar={<Avatar className={css.avatar}><PermContactCalendar /></Avatar>}
+                avatar={<Avatar className={css.avatar}><Assignment /></Avatar>}
                 title="Processo"
                 subheader="Informe os dados do processo"
                 className={css.cartaoTitulo}
