@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import CabecalhoForm from '../../components/CabecalhoForm';
 import { Avatar, Button, Card, CardActions, CardContent, CardHeader, Divider, Grid, IconButton, TextField } from '@material-ui/core';
-import { ArrowBack, PermContactCalendar, YoutubeSearchedFor } from '@material-ui/icons';
+import { ArrowBack, Person, YoutubeSearchedFor } from '@material-ui/icons';
 import { useHistory } from 'react-router-dom';
 import { useGeral } from '../../contexts/GeralCtx';
 import * as service from '../../services/UsuarioService';
@@ -117,7 +117,7 @@ export default function UsuariioForm() {
           <CardContent>
             <Card>
               <CardHeader
-                avatar={<Avatar className={css.avatar}><PermContactCalendar /></Avatar>}
+                avatar={<Avatar className={css.avatar}><Person /></Avatar>}
                 title="Usuário"
                 subheader="Informe os dados do usuário"
                 className={css.cartaoTitulo}
